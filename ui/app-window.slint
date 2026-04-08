@@ -1,0 +1,75 @@
+import { VerticalBox } from "std-widgets.slint";
+// for English fonts
+import "../FiraCode-Bold.ttf";
+// for Simplified Chinese fonts
+import "../MapleMonoNormal-CN-Bold.ttf";
+export component AppWindow inherits Window {
+    width: 240px;
+    height: 240px;
+    background: #f3ebf1;
+    in property<string> clock_text: "00:00:00";
+    default-font-family: "Maple Mono Normal CN";
+
+    VerticalBox {
+        alignment: center;
+        spacing: 4px;
+        Text {
+            text: "🦀 Rust on CM0 💕";
+            horizontal-alignment: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #c71769;
+        }
+        HorizontalLayout {
+            alignment: center;
+            spacing: 6px;
+            Image {
+                source: @image-url("../assets/ferris.png");
+                width: 80px;
+                height: 52px;
+                vertical-alignment: center;
+            }
+            Image {
+                source: @image-url("../assets/raspberry-pi.png");
+                width: 52px;
+                height: 52px;
+                vertical-alignment: center;
+            }
+            Image {
+                source: @image-url("../assets/slint.png");
+                width: 28px;
+                height: 42px;
+                vertical-alignment: center;
+            }
+        }
+        Text {
+            text: root.clock_text;
+            horizontal-alignment: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #19e60b;
+        }
+        HorizontalLayout {
+            alignment: center;
+            spacing: 10px;
+            Text {
+                text: "🇨🇳";
+                horizontal-alignment: center;
+                font-size: 32px;
+            }
+            Text {
+                text: "你好，世界！";
+                horizontal-alignment: center;
+                font-size: 24px;
+                font-weight: 700;
+                color: #e75b31;
+            }
+        }
+        Text {
+            text: "🐧 Linux + Slint";
+            horizontal-alignment: center;
+            font-size: 20px;
+            color: #317be7;
+        }
+    }
+}

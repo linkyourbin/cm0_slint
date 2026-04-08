@@ -1,0 +1,35 @@
+[package]
+name = "slint_st7789_cm0"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "try_slint"
+path = "src/main.rs"
+
+[dependencies]
+# Slint
+slint = { version = "1.15.1", default-features = false, features = [
+    "compat-1-2",
+    "renderer-software",
+    "unsafe-single-threaded",
+    "libm",
+] }
+
+# cm0 for Linux GPIO/SPI (use local fork with CM0 support)
+cm0 = { git = "https://github.com/linkyourbin/cm0.git", features = ["hal"] }
+
+# Display driver (same as embassy project)
+mipidsi = "0.10.0"
+embedded-graphics-core = "0.4.1"
+embedded-hal = "1.0.0"
+embedded-hal-bus = "0.3.0"
+
+[build-dependencies]
+slint-build = "1.15.1"
+
+[profile.release]
+opt-level = "z"
+lto = "fat"
+codegen-units = 1
+strip = true
